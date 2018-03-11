@@ -21,13 +21,27 @@ pipeline {
       }
     }
     stage('Test') {
-      steps {
-        echo 'testing'
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'testing'
+          }
+        }
+        stage('another test') {
+          steps {
+            sh 'echo "another tets"'
+          }
+        }
       }
     }
     stage('Done') {
       steps {
         echo 'build done'
+      }
+    }
+    stage('test') {
+      steps {
+        sh 'echo "test"'
       }
     }
   }
