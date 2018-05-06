@@ -47,7 +47,9 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh '''git tag -a some_tag -m \'Jenkins\'
+        sh '''git config --global user.email "sudharsan.sivasankaran@gmail.com"
+git config --global user.name "Sudharsan"
+git tag -a some_tag -m \'Jenkins\'
 git push master --tags'''
       }
     }
