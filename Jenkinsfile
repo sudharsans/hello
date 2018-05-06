@@ -47,7 +47,8 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'git push'
+        sh '''git tag -a some_tag -m \'Jenkins\'
+git push master --tags'''
       }
     }
   }
