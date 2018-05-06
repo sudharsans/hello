@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
           steps {
             echo 'test'
-checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PreBuildMerge', options: [fastForwardMode: 'FF', mergeRemote: 'origin', mergeStrategy: <object of type org.jenkinsci.plugins.gitclient.MergeCommand.Strategy>, mergeTarget: 'master']]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/sudharsans/hello.git']]]
+checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PreBuildMerge', options: [fastForwardMode: 'FF', mergeRemote: 'origin', mergeTarget: 'master']]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/sudharsans/hello.git']]]
           }
         }
         stage('Build1') {
