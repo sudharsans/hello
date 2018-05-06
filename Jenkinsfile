@@ -1,9 +1,9 @@
 pipeline {
   agent any
-  stages {
-    stage('Checkout'){
+  node{
     checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PreBuildMerge', options: [fastForwardMode: 'FF', mergeRemote: 'https://github.com/sudharsans/hello', mergeTarget: 'master']]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sudharsans/hello']]]
-    }
+  }
+  stages {
       stage('Build') {
 
       parallel {
