@@ -47,7 +47,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'git push -u origin master'
+        sh 'git push'
       }
     }
   }
