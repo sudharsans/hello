@@ -1,13 +1,12 @@
 pipeline {
   agent any
   stages {
-      stage('Build') {
-
+    stage('Build') {
       parallel {
         stage('Build') {
           steps {
             echo 'test'
-checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PreBuildMerge', options: [fastForwardMode: 'FF', mergeRemote: 'origin', mergeTarget: 'master']]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/sudharsans/hello.git']]]
+            checkout(changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PreBuildMerge', options: [fastForwardMode: 'FF', mergeRemote: 'origin', mergeTarget: 'master']]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/sudharsans/hello.git']]])
           }
         }
         stage('Build1') {
@@ -44,6 +43,11 @@ checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: 
     stage('test') {
       steps {
         sh 'echo "test"'
+      }
+    }
+    stage('Push') {
+      steps {
+        sh 'git push -u origin master'
       }
     }
   }
