@@ -49,7 +49,7 @@ pipeline {
       steps {
         sh '''git config --global user.email "sudharsan.sivasankaran@gmail.com"
 git config --global user.name "Sudharsan"
-git tag -a some_tag -m \'Jenkins\'
+git tag -a some_tag123 -m \'Jenkins\'
 git push master --tags'''
       }
     }
